@@ -1,0 +1,15 @@
+box: ruby:alpine
+build:
+  steps:
+    - script:
+        name: install fakes3
+        code: gem install fakes3
+
+    - internal/docker-push:
+        repository: quay.io/wercker/fakes3
+        registry: https://quay.io
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+        entrypoint: fakes3 -r /fakes3_root -p 4568
+        ports: 4568
