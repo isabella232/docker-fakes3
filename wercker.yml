@@ -1,4 +1,6 @@
-box: ruby:alpine
+box:
+  id: ruby:alpine
+  cmd: /bin/sh
 build:
   steps:
     - script:
